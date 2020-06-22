@@ -1,0 +1,29 @@
+---
+### -------------------------------------------------
+### REMOVE ANY PREVIOUS NETBOX VARS DIRECTORY
+### -------------------------------------------------
+- name: remove netbox vars directory
+  file:
+    path: "{{ netbox_vars_directory }}"
+    state: absent
+
+- name: create netbox vars directory
+  file:
+    path: "{{ netbox_vars_directory }}"
+    state: directory
+
+### -------------------------------------------------
+### CONVERT JSON TO YAML
+### -------------------------------------------------
+- name: run JSON output through filter plugin
+  set_fact:
+    device_interfaces: "{{ device_interfaces | to_nice_yaml(indent=2, width=1337) }}"
+
+### ------------------------------------------------------------
+### WRITING NETBOX DATA TO FILES
+### ------------------------------------------------------------
+- name: "### Writing human readable configuration as a file for backup"
+  local_action:
+    module: copy
+    content: "{{ device_interfaces }}"
+    dest: "{{ interface_yaml }}"
