@@ -17,3 +17,8 @@
       - { role: netbox/retrieve_site_data }
       - { role: netbox/retrieve_device_interfaces }
       - { role: netbox/debug_data }
+
+      ### ---------------------------------------------------------------------------
+      ### Write Netbox data to local file in host_vars
+      ### ---------------------------------------------------------------------------
+      - { role: netbox/write_to_hostvars }
