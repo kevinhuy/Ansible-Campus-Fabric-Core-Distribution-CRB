@@ -49,7 +49,6 @@ ansible_python_interpreter: "{{ ansible_playbook_python }}"
 ### NETBOX WORK
 ### -------------------------------------------------
 
-# declared when you want to transfer a brownfield site to overwrite local yaml files
-host_vars_directory: "./host_vars/{{ inventory_hostname }}"
+netbox_vars_directory: "./host_vars/{{ inventory_hostname }}"
 
-interface_yaml: "{{ host_vars_directory }}/netbox_interfaces.yml"
+interface_yaml: "{{ netbox_vars_directory }}/interfaces.yml"
