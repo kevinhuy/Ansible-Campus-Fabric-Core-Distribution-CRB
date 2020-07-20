@@ -17,10 +17,6 @@ configuration:
               name: 192.168.0.11
             - description: "dist-sw2"
               name: 192.168.0.12
-            - description: "dist-sw3"
-              name: 192.168.0.13
-            - description: "dist-sw4"
-              name: 192.168.0.14
           # export: "reject-type5"
           multipath: null
           vpn_apply_export: null
@@ -46,7 +42,5 @@ configuration:
             - name: "ae11.0"
             - name: "ae12.0"
             - name: "ae13.0"
-            - name: "ae14.0"
-            - name: "ae16.0"
             - name: "lo0.0"
               passive: null
