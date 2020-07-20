@@ -2,4 +2,4 @@ configuration:
   chassis:
     aggregated_devices:
       ethernet:
-        device_count: "64"
+        device_count: "10"
