@@ -163,6 +163,110 @@ configuration:
                     virtual_gateway_address: "2001:db8::172:20:3:250"
                   - name: "fe80::172:20:3:251/112"
 
+          # ### VLAN 61
+          - name: "61"
+            family:
+              inet:
+                address:
+                  name: "172.30.1.251/24"
+                  virtual_gateway_address: "172.30.1.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:1:251/112"
+                    virtual_gateway_address: "abcd::60:0:1:250"
+                  - name: "fe80::60:0:1:251/112"
+
+          # ### VLAN 62
+          - name: "62"
+            family:
+              inet:
+                address:
+                  name: "172.30.2.251/24"
+                  virtual_gateway_address: "172.30.2.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:2:251/112"
+                    virtual_gateway_address: "abcd::60:0:2:250"
+                  - name: "fe80::60:0:2:251/112"
+
+          # ### VLAN 63
+          - name: "63"
+            family:
+              inet:
+                address:
+                  name: "172.30.3.251/24"
+                  virtual_gateway_address: "172.30.3.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:3:251/112"
+                    virtual_gateway_address: "abcd::60:0:3:250"
+                  - name: "fe80::60:0:3:251/112"
+
+          # ### VLAN 64
+          - name: "64"
+            family:
+              inet:
+                address:
+                  name: "172.30.4.251/24"
+                  virtual_gateway_address: "172.30.4.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:4:251/112"
+                    virtual_gateway_address: "abcd::60:0:4:250"
+                  - name: "fe80::60:0:4:251/112"
+
+          # ### VLAN 65
+          - name: "65"
+            family:
+              inet:
+                address:
+                  name: "172.30.5.251/24"
+                  virtual_gateway_address: "172.30.5.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:5:251/112"
+                    virtual_gateway_address: "abcd::60:0:5:250"
+                  - name: "fe80::60:0:5:251/112"
+
+          # ### VLAN 66
+          - name: "66"
+            family:
+              inet:
+                address:
+                  name: "172.30.6.251/24"
+                  virtual_gateway_address: "172.30.6.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:6:251/112"
+                    virtual_gateway_address: "abcd::60:0:6:250"
+                  - name: "fe80::60:0:6:251/112"
+
+          # ### VLAN 67
+          - name: "67"
+            family:
+              inet:
+                address:
+                  name: "172.30.7.251/24"
+                  virtual_gateway_address: "172.30.7.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:7:251/112"
+                    virtual_gateway_address: "abcd::60:0:7:250"
+                  - name: "fe80::60:0:7:251/112"
+
+          # ### VLAN 68
+          - name: "68"
+            family:
+              inet:
+                address:
+                  name: "172.30.8.251/24"
+                  virtual_gateway_address: "172.30.8.250"
+              inet6:
+                address:
+                  - name: "abcd::60:0:8:251/112"
+                    virtual_gateway_address: "abcd::60:0:8:250"
+                  - name: "fe80::60:0:8:251/112"
+
       # ### LOOPBACK INTERFACES
       - name: lo0
         unit:
@@ -179,3 +283,10 @@ configuration:
               inet:
                 address:
                   name: "{{ device.lo1.ipv4 }}/32"
+
+          - name: "3001"
+            description: "evpn_type5_vrf__3001"
+            family:
+              inet:
+                address:
+                  name: "{{ device.lo3001.ipv4 }}/32"
