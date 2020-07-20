@@ -7,4 +7,4 @@ configuration:
         - null
     router_id: "{{ device.lo0.ipv4 }}"
     autonomous_system:
-      as_number: "65100"
+      as_number: "65411"
