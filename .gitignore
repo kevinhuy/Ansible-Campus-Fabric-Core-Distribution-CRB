@@ -17,7 +17,6 @@ files/ansible/filter_plugins/__pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 downloads/
