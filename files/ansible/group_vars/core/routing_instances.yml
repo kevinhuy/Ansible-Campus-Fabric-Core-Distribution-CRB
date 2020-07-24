@@ -2,7 +2,7 @@ configuration:
   routing_instances:
     instance:
 
-      # ### VRF VS__1: virtual-switch
+      # ### Routing Instance VS__1: virtual-switch
       - name: "VS__1"
         description: "VRF for virtual-switch"
         instance_type: "virtual-switch"
@@ -117,7 +117,7 @@ configuration:
               vni: 5068
               ingress_node_replication: null
 
-      # ### VRF evpn_vrf__1: vrf
+      # ### Routing Instance evpn_vrf__1: vrf
       - name: evpn_vrf__1
         instance_type: "vrf"
 
@@ -140,3 +140,28 @@ configuration:
         ### VRF configurations
         vrf_target: 
           community: "target:64500:1"
+
+      # ### Routing Instance evpn_type5_vrf__3001: vrf
+      - name: evpn_type5_vrf__3001
+        instance_type: "vrf"
+
+        routing_options:
+          router_id: "{{ device.lo1.ipv4 }}"
+          autonomous_system: 
+            as_number: 64500
+
+        ### INTERFACES
+        interface:
+          - name: "lo0.3001"
+          - name: "irb.61"
+          - name: "irb.62"
+          - name: "irb.63"
+          - name: "irb.64"
+
+        ### ROUTE DISTINGUISHERS
+        route_distinguisher:
+          rd_type: "{{ device.lo3001.ipv4 }}:1"
+
+        ### VRF configurations
+        vrf_target: 
+          community: "target:64500:3001"
