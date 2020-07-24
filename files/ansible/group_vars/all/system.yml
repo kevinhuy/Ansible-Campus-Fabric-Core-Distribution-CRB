@@ -11,39 +11,9 @@ configuration:
           class: super-user
           uid: "3001"
 
-        - name: packetferret
-          authentication:
-            encrypted_password: $6$.HKuZDyY$H2rjpnC8wAnzz71hn0WisOjjrg5Ap.Mpqui4/0CMj6G.b5VF6m4ZrsUMkG7stBc3Q8i.HPFleceoM6Kwa7D5c.
-          class: super-user
-          uid: "3002"
-
-        - name: nornir
-          authentication:
-            encrypted_password: $6$O.kXS5OW$0HsqaFeAb1EXcHaLACw60bFgl/vA9SxxHHRcw1.BZdQwHygXQ0HvSdiKdgIUltO2OGXJWhTXhktZFAoJ2y85W1
-          class: super-user
-          uid: "3003"
-
-        - name: cwallace
-          authentication:
-            encrypted_password: $6$E3nzPlGE$g/SfhM2mAfY4PKusTalWKVXydNR3n8//MRhjwi5LuZ4Xc3C/BLD.f62IuxEAIrTZAP1oB8j3y6F2tM.Bux/ZK1
-          class: super-user
-          uid: "3004"
-
-        - name: jthompson
-          authentication:
-            encrypted_password: $6$9ZDIN/o1$ctt1V9WYpG8LA2iKB7Wn8bSCx785vDBZrSEyJIOGbtyFdXujNsR7fpjKJWpS6m97IpGT0wmJmWdZOB11hI/vQ0
-          class: super-user
-          uid: "3005"
-
-        - name: cremsburg
-          authentication:
-            encrypted_password: $6$JX8v3CWG$oLWOKFK0phWqtGrFx7HdeeVcgFRyQULVxgoTD4jMMGVNA87UUxTOYgewuWRwoosfwFqRTLO8zHQXkGWM0yxmT1
-          class: super-user
-          uid: "3006"
-
     name_server:
-      - name: 10.6.6.20
-      - name: 10.6.6.21
+      - name: 1.1.1.1
+      - name: 8.8.8.8
     root_authentication:
       encrypted_password: $6$eG4FXiQW$J4/a.5GZlXlrKcvJTpbaMl.qIelPqjR5lFk.POmxo5O3Vp5OdjHFFJ97PMqvABuZZOGXrdvSE6YF3f33wilgO.
     services:
@@ -86,7 +56,7 @@ configuration:
           contents:
             any: null
             name: any
-          port: 5514
+          port: 514
           source_address: "{{ ansible_host }}"
           structured_data: null
 

@@ -34,7 +34,7 @@ Here is a high level perspective of what the playbook will build without any adj
 
 ### Campus Fabric with Core-Distribution CRB Core Diagram
 
-[![campus collapsed core](files/images/Ansible-Campus-Fabric-Core-Distribution-CRB.png)](files/images/Ansible-Campus-Fabric-Core-Distribution-CRB_small.png)
+[![campus collapsed core](files/images/Ansible-Campus-Fabric-Core-Distribution-CRB.jpg)](files/images/Ansible-Campus-Fabric-Core-Distribution-CRB.jpg)
 
 ## Execution
 

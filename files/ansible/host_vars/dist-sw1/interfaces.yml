@@ -3,52 +3,40 @@ configuration:
     interface:
       # ### PHYSICAL INTERFACES
       - name: xe-0/0/0
-        description: "Connected to core-sw1 (member of ae11)"
+        description: "[xe-0/0/0] Connected to core1 xe-0/1/0"
         ether_options:
           ieee_802.3ad:
             bundle: ae11
 
       - name: xe-0/0/1
-        description: "Connected to core-sw1 (member of ae11)"
+        description: "[xe-0/0/1] Connected to core1 xe-0/1/1"
         ether_options:
           ieee_802.3ad:
             bundle: ae11
 
       - name: xe-0/0/2
-        description: "Connected to core-sw2 (member of ae12)"
+        description: "[xe-0/0/2] Connected to core1 xe-0/1/0"
         ether_options:
           ieee_802.3ad:
-            bundle: ae12
+            bundle: ae21
 
       - name: xe-0/0/3
-        description: "Connected to core-sw2 (member of ae12)"
-        ether_options:
-          ieee_802.3ad:
-            bundle: ae12
-
-      - name: xe-0/0/4
-        description: "Connected to access-sw1 (member of ae21)"
+        description: "[xe-0/0/3] Connected to core1 xe-0/1/1"
         ether_options:
           ieee_802.3ad:
             bundle: ae21
 
-      - name: xe-0/0/5
-        description: "Connected to access-sw1 (member of ae21)"
+      - name: ge-0/0/10
+        description: "[ge-0/0/10] Connected to access-sw1 ge-2/0/0"
         ether_options:
           ieee_802.3ad:
-            bundle: ae21
+            bundle: ae3
 
-      - name: xe-0/0/6
-        description: "Connected to access-sw2 (member of ae22)"
+      - name: ge-0/0/11
+        description: "[ge-0/0/11] Connected to access-sw2 ge-2/0/0"
         ether_options:
           ieee_802.3ad:
-            bundle: ae22
-
-      - name: xe-0/0/7
-        description: "Connected to access-sw2 (member of ae22)"
-        ether_options:
-          ieee_802.3ad:
-            bundle: ae22
+            bundle: ae4
 
       # ### AE INTERFACES
       - name: ae11
@@ -65,9 +53,9 @@ configuration:
           family:
             inet:
               address:
-                name: "172.16.1.1/31"
+                name: "172.16.0.1/31"
 
-      - name: ae12
+      - name: ae21
         description: "Connected to core-sw2 (members: xe-0/0/2 / xe-0/0/3)"
         apply_groups:
           - AE_MTU_JUMBO
@@ -81,10 +69,10 @@ configuration:
           family:
             inet:
               address:
-                name: "172.16.2.1/31"
+                name: "172.17.0.1/31"
 
-      - name: ae21
-        description: "Connected to access-sw1 (members: xe-0/0/4-5)"
+      - name: ae3
+        description: "Connected to access-sw1 (members: ge-0/0/10)"
         apply_groups:
           - AE_MTU_JUMBO
           - AE_LACP_BOND
@@ -94,7 +82,7 @@ configuration:
             system_id: 00:40:00:00:00:01
         esi:
           all_active: null
-          identifier: 00:11:11:11:11:11:11:11:11:01
+          identifier: 00:00:22:22:33:33:44:44:00:01
         unit:
           - name: "0"
             family:
@@ -106,8 +94,8 @@ configuration:
                     - vlan_2 
                     - vlan_3
 
-      - name: ae22
-        description: "Connected to access-sw2 (members: xe-0/0/6-7)"
+      - name: ae4
+        description: "Connected to access-sw2 (members: ge-0/0/11)"
         apply_groups:
           - AE_MTU_JUMBO
           - AE_LACP_BOND
@@ -117,7 +105,7 @@ configuration:
             system_id: 00:40:00:00:00:02
         esi:
           all_active: null
-          identifier: 00:11:11:11:11:11:11:11:11:02
+          identifier: 00:00:22:22:33:33:44:44:00:02
         unit:
           - name: "0"
             family:
@@ -128,28 +116,6 @@ configuration:
                     - vlan_1 
                     - vlan_2 
                     - vlan_3
-
-      # ### MGMT INTERFACE
-      - name: em0
-        unit:
-          name: "0"
-          description: "out of band interface"
-          family:
-            inet:
-              address:
-                name: "{{ ansible_host }}/24"
-                arp:
-                  - name: "10.6.5.1"
-                    mac: "f4:a7:39:1b:d4:9b"
-
-      # ### vQFX PFE INTERFACE
-      - name: em1
-        unit:
-          name: "0"
-          family:
-            inet:
-              address:
-                name: "169.254.0.2/24"
 
       # ### LOOPBACK INTERFACES
       - name: lo0
