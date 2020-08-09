@@ -1,7 +1,7 @@
 ---
 all:
   children:
-    campus-building-1:
+    campus:
       children:
         core:
           hosts:
