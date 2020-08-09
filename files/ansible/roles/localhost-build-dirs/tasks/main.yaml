@@ -1,0 +1,39 @@
+---
+### -------------------------------------------------
+### PRINT MESSAGE TO CONSOLE WITH PATH OF THIS FILE
+### -------------------------------------------------
+- name: Build local directories to hold output files
+  debug:
+    msg: "Check roles/localhost-build-dirs/defaults/main.yml"
+  run_once: true
+
+### -------------------------------------------------
+### REMOVE AND RECREATE BUILD DIRECTORY
+### -------------------------------------------------
+- name: remove previous temporary build directory
+  file:
+    path: "{{ build_directory_temp }}"
+    state: absent
+
+- name: create new temporary directory
+  file:
+    path: "{{ build_directory_temp }}"
+    state: directory
+
+### -------------------------------------------------
+### REMOVE AND RECREATE CONFIG DIRECTORY
+### -------------------------------------------------
+- name: remove any previous config files
+  file:
+    path: "{{ completed_config_file }}"
+    state: absent
+
+- name: remove any previous build directory complete
+  file:
+    path: "{{ build_directory_complete }}"
+    state: absent
+
+- name: create new build_directory_complete
+  file:
+    path: "{{ build_directory_complete }}"
+    state: directory

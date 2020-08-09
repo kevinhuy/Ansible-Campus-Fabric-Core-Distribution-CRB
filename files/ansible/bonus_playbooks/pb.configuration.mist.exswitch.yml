@@ -1,0 +1,51 @@
+---
+# ### ---------------------------------------------------------------------------
+# ### VALIDATE THAT ANSIBLE CONTROL MACHINE IS RUNNING A RECENT ANSIBLE VERSION
+# ### ---------------------------------------------------------------------------
+- hosts: all
+  connection: local
+  gather_facts: False
+  become: False
+  roles: 
+    - juniper.junos
+  tasks:
+    - name: "Check ansible version >=2.7.8"
+      assert:
+        msg: "Ansible must be v2.7.8 or higher"
+        that:
+          - ansible_version.string is version("2.7.8", ">=")
+      tags:
+        - check
+      run_once: True
+
+### ---------------------------------------------------------------------------
+### PROVISION EX SWITCH FROM MIST API
+### ---------------------------------------------------------------------------
+- hosts: localhost
+  vars:
+    # ### set the details of Mist API
+    mist:
+      baseurl: "https://api.mist.com/api/v1"
+      api_token: "abcdefghijkl1234"
+      site_id: "abcdefgh-1234-5678-90ab-abcdefghijkl"
+      device_id: "00000000-0000-0000-1000-abcdefghijkl"
+    # ### create three new vlans on our switch
+    switch_config:
+      name: "alderaan"
+      networks:
+        employee_vlan:
+          vlan_id: 42
+        voice_vlan:
+          vlan_id: 43
+        guest_vlan:
+          vlan_id: 44
+  tasks:
+    - name: Push the network configuration to our Mist managed switch
+      uri:
+        url: "{{ mist.baseurl }}/sites/{{ mist.site_id }}/devices/{{ mist.device_id }}"
+        headers:
+          Authorization: "token {{ mist.api_token }}"
+        method: POST
+        body: "{{ switch_config | to_json }}"
+        body_format: json
+

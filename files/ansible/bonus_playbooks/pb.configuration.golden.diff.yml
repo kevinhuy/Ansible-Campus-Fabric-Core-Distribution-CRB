@@ -1,0 +1,9 @@
+---
+### ---------------------------------------------------------------------------
+### VALIDATE, DIFF, AND APPLY CONFIGURATION TO DEVICES
+### ---------------------------------------------------------------------------
+- hosts: all
+  connection: local
+  gather_facts: False
+  roles:
+    - { role: diff_golden }
