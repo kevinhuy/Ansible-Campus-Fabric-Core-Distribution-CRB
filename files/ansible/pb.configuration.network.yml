@@ -1,0 +1,19 @@
+---
+### --------------------------------------------------------------------------------
+### hello future self, this playbook is really just helpful in use-cases where 
+###   a user is looking to execute the BUILD and APPLY playbooks with a single
+###   command. It is also beneficial in instances where Ansible is executed in 
+###   a docker container via a Makefile.
+### ---------------------------------------------------------------------------
+- set_fact:
+    happy: True
+
+### ---------------------------------------------------------------------------
+### build the configurations
+### ---------------------------------------------------------------------------
+- import_playbook: pb.configuration.build.yml
+
+### ---------------------------------------------------------------------------
+### apply the generated configurations to the network devices
+### ---------------------------------------------------------------------------
+- import_playbook: pb.configuration.apply.yml

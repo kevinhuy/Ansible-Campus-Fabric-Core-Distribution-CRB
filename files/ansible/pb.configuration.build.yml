@@ -23,7 +23,7 @@
   connection: local
   gather_facts: False
   roles:
-    - { role: directory_build }
+    - { role: localhost-build-dirs }
 
 ### ---------------------------------------------------------------------------
 ### BUILD CONFIGURATION IN PIECES AND ASSEMBLE INTO SINGLE CONFIG FILE
@@ -33,30 +33,29 @@
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   gather_facts: False
   roles:
-    - { role: config/build/version }
-    - { role: config/build/apply_groups }
-    - { role: config/build/groups }
-    - { role: config/build/system }
-    - { role: config/build/event_options, when: "'switch' in device.role" }
-    - { role: config/build/chassis }
-    - { role: config/build/services, when: "'firewall' in device.role" }
-    - { role: config/build/security, when: "'firewall' in device.role" }
-    - { role: config/build/interfaces }
-    - { role: config/build/snmp }
-    - { role: config/build/forwarding_options }
-    - { role: config/build/routing_instances }
-    - { role: config/build/routing_options }
-    - { role: config/build/protocols }
-    - { role: config/build/policy_options }
-    - { role: config/build/class_of_service }
-    - { role: config/build/firewall }
-    - { role: config/build/switch_options }
-    - { role: config/build/poe }
-    - { role: config/build/virtual_chassis, when: "'virtual_chassis' in device.role" }
-    - { role: config/build/access }
-    - { role: config/build/vlans }
-    - { role: config/assemble }
-
+    - { role: build_config_stanza/version }
+    - { role: build_config_stanza/apply_groups }
+    - { role: build_config_stanza/groups }
+    - { role: build_config_stanza/system }
+    - { role: build_config_stanza/event_options, when: "'switch' in device.role" }
+    - { role: build_config_stanza/chassis }
+    - { role: build_config_stanza/services, when: "'firewall' in device.role" }
+    - { role: build_config_stanza/security, when: "'firewall' in device.role" }
+    - { role: build_config_stanza/interfaces }
+    - { role: build_config_stanza/snmp }
+    - { role: build_config_stanza/forwarding_options }
+    - { role: build_config_stanza/routing_instances }
+    - { role: build_config_stanza/routing_options }
+    - { role: build_config_stanza/protocols }
+    - { role: build_config_stanza/policy_options }
+    - { role: build_config_stanza/class_of_service }
+    - { role: build_config_stanza/firewall }
+    - { role: build_config_stanza/switch_options }
+    - { role: build_config_stanza/poe }
+    - { role: build_config_stanza/virtual_chassis, when: "'virtual_chassis' in device.role" }
+    - { role: build_config_stanza/access }
+    - { role: build_config_stanza/vlans }
+    - { role: assemble_config }
 ### ---------------------------------------------------------------------------
 ### DEBUGGING A GENERATED CONFIGURATION
 ### ---------------------------------------------------------------------------
